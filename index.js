@@ -34,11 +34,11 @@ app.post("/checkout", (req, res) => {
       },
     ],
     back_urls: {
-      success: "https://kingcomm.vercel.app/buy",
+      success: "https://angular-prueba-donar.vercel.app/",
       failure: "http://localhost:3000/",
       pending: "http://localhost:3000/",
     },
-    notification_url: "https://kingcomm.vercel.app/buy",
+    notification_url: "https://angular-prueba-donar.vercel.app/",
     auto_return: "approved",
   };
 
