@@ -16,7 +16,7 @@ mercadopago.configure({
 });
 
 //routes
-app.get("/checkout", (req, res) => {
+app.get("/check", (req, res) => {
   res.send("Funcionando correctamente");
 });
 
@@ -26,17 +26,28 @@ app.post("/checkout", (req, res) => {
   let preference = {
     items: [
       {
-        title: "Donación a Wallet",
-        //title:req.body.title,
+        title: req.body.name,
+        quantity: 1,
+        //picture_url: req.body.url,
+        currency_id: "ARS",
         unit_price: parseInt(req.body.price),
-        //quantity: 1,
       },
     ],
+    back_urls: {
+      success: "https://kingcomm.vercel.app/buy",
+      failure: "http://localhost:3000/",
+      pending: "http://localhost:3000/",
+    },
+    notification_url: "https://kingcomm.vercel.app/buy",
+    auto_return: "approved",
   };
 
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
+      //la respuesta trae un objeto con la url especificada en init_point
+      console.log(response);
+      //res.json(response);
       res.redirect(response.body.init_point);
     })
     .catch(function (error) {
