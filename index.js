@@ -34,7 +34,8 @@ app.post("/checkout", (req, res) => {
       },
     ],
     back_urls: {
-      success: "https://angular-prueba-donar.vercel.app/",
+      success: "http://localhost:4200/home",
+      //success: "https://angular-prueba-donar.vercel.app/",
       failure: "http://localhost:3000/",
       pending: "http://localhost:3000/",
     },
